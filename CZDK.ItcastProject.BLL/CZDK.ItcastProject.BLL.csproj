@@ -42,6 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserInfoService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CZDK.ItcastProject.DAL\CZDK.ItcastProject.DAL.csproj">
+      <Project>{5c336132-1e12-4d6f-82fe-c476fd52f3e1}</Project>
+      <Name>CZDK.ItcastProject.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CZDK.ItcastProject.Model\CZDK.ItcastProject.Model.csproj">
+      <Project>{1ded4a60-6f1a-4987-a28e-62ad8f5c2e8b}</Project>
+      <Name>CZDK.ItcastProject.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

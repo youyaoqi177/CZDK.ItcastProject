@@ -1,5 +1,7 @@
 ﻿using System;
-
+/// <summary>
+/// 用户信息实体类
+/// </summary>
 namespace CZDK.ItcastProject.Model
 {
     public class UserInfo
