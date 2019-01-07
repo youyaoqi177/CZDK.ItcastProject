@@ -67,6 +67,27 @@ namespace CZDK.ItcastProject.DAL
             return SqlHelper.ExecuteNonquery(sqlStr, CommandType.Text, par);
         }
 
+        public int EditUserInfo(UserInfo userInfo)
+        {
+            string sqlStr = "update UserInfo " +
+                "set UserName=@name,UserPass=@pwd,RegTime=@time,Email=@email " +
+                "where ID=@ID";
+            SqlParameter[] pars = {
+                new SqlParameter("@name",SqlDbType.NVarChar,32),
+                new SqlParameter("@pwd",SqlDbType.NVarChar,32),
+                new SqlParameter("@time",SqlDbType.DateTime),
+                new SqlParameter("@email",SqlDbType.NVarChar,32),
+                new SqlParameter("@ID",SqlDbType.Int)
+            };
+            pars[0].Value = userInfo.UserName;
+            pars[1].Value = userInfo.UserPass;
+            pars[2].Value = userInfo.RegTime;
+            pars[3].Value = userInfo.Email;
+            pars[4].Value = userInfo.Id;
+
+            return SqlHelper.ExecuteNonquery(sqlStr, CommandType.Text, pars);
+        }
+
         /// <summary>
         /// 根据用户编号获取用户信息
         /// </summary>
