@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace CZDK.ItcastProject.DAL
 {
@@ -28,6 +29,29 @@ namespace CZDK.ItcastProject.DAL
                 }
             }
             return list;
+        }
+
+        /// <summary>
+        /// 添加用户信息
+        /// </summary>
+        /// <param name="userinfo"></param>
+        /// <returns></returns>
+        public int AddUserInfo(UserInfo userinfo)
+        {
+            string sqlStr = "insert into UserInfo values(@username,@userpwd,@time,@email)";
+            SqlParameter[] pars = {
+                   new SqlParameter("@username",SqlDbType.NVarChar,32),
+                   new SqlParameter("@userpwd",SqlDbType.NVarChar,32),
+                   new SqlParameter("@time",SqlDbType.DateTime),
+                   new SqlParameter("@email",SqlDbType.NVarChar,32)
+            };
+            pars[0].Value = userinfo.UserName;
+            pars[1].Value = userinfo.UserPass;
+            pars[2].Value = userinfo.RegTime;
+            pars[3].Value = userinfo.Email;
+
+            //调用方法 参数CommandType.Text表示sql语句
+            return SqlHelper.ExecuteNonquery(sqlStr, CommandType.Text, pars);
         }
 
         /// <summary>
