@@ -71,6 +71,7 @@
     <Content Include="bootstrap-3.3.7\bootstrap.min.css" />
     <Content Include="bootstrap-3.3.7\bootstrap.min.js" />
     <Content Include="Error.html" />
+    <Content Include="index.html" />
     <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="UserInfoList.html" />
     <Content Include="Web.config" />

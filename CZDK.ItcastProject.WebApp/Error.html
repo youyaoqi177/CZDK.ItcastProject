@@ -3,9 +3,27 @@
 <head>
     <meta charset="utf-8" />
     <script src="js/jquery-3.3.1.min.js"></script>
-    <title></title>
+    <title>错误页</title>
+    <!--实现倒计时跳转-->
+    <script>
+        window.onload = function () {
+            setTimeout(change, 1000);
+        }
+        function change() {
+            var time = document.getElementById("time").innerHTML;
+            time = parseInt(time);
+            time--;
+            if (time < 1) {
+                window.location.href = "UserInfoList.ashx";
+            } else {
+                document.getElementById("time").innerHTML = time;
+                setTimeout(change, 1000);
+            }
+        }
+    </script>
 </head>
 <body>
-    服务器忙！,<a href="UserInfoList.ashx">跳转到首页</a>
+    服务器忙！<span style="font-size:20px;color:red" id="time">5</span>秒后自动
+    <a href="UserInfoList.ashx">跳转到首页</a>
 </body>
 </html>
