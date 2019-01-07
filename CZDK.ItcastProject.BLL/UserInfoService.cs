@@ -36,6 +36,11 @@ namespace CZDK.ItcastProject.BLL
         {
             return userInfoDal.DeleteUserInfo(userInfo) > 0;
         }
+
+        public UserInfo GetUserInfo(int id)
+        {
+            return userInfoDal.GetUserInfo(id);
+        }
     }
 
 

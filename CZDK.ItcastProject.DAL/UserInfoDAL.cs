@@ -68,6 +68,26 @@ namespace CZDK.ItcastProject.DAL
         }
 
         /// <summary>
+        /// 根据用户编号获取用户信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public UserInfo GetUserInfo(int id)
+        {
+            string sqlStr = "select * from UserInfo where ID=@id";
+            SqlParameter par = new SqlParameter("@id", SqlDbType.Int);
+            par.Value = id;
+            DataTable dt = SqlHelper.GetDataTable(sqlStr, CommandType.Text, par);
+            UserInfo userInfo = null;
+            if (dt.Rows.Count > 0)
+            {
+                userInfo = new UserInfo();
+                LoadEntity(userInfo, dt.Rows[0]);
+            }
+            return userInfo;
+        }
+
+        /// <summary>
         /// 将行中数据赋值到userinfo中
         /// </summary>
         /// <param name="userInfo"></param>

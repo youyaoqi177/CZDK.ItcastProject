@@ -31,6 +31,9 @@ namespace CZDK.ItcastProject.WebApp
                 sb.AppendFormat("<td>");
                 sb.AppendFormat("<a href='DeleteUser.ashx?id={0}' class='dele'>删除</a>", userInfo.Id);
                 sb.AppendFormat("</td>");
+                sb.AppendFormat("<td>");
+                sb.AppendFormat("<a href='ShowDetail.ashx?uid={0}'>详细</a>", userInfo.Id);
+                sb.AppendFormat("</td>");
                 sb.AppendFormat("</tr>");
             }
 
