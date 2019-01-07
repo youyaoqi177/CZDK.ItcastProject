@@ -55,6 +55,19 @@ namespace CZDK.ItcastProject.DAL
         }
 
         /// <summary>
+        /// 删除用户信息
+        /// </summary>
+        /// <param name="userinfo"></param>
+        /// <returns></returns>
+        public int DeleteUserInfo(UserInfo userinfo)
+        {
+            string sqlStr = "delete from UserInfo where ID=@id";
+            SqlParameter par = new SqlParameter("@ID", SqlDbType.Int);
+            par.Value = userinfo.Id;
+            return SqlHelper.ExecuteNonquery(sqlStr, CommandType.Text, par);
+        }
+
+        /// <summary>
         /// 将行中数据赋值到userinfo中
         /// </summary>
         /// <param name="userInfo"></param>

@@ -26,6 +26,16 @@ namespace CZDK.ItcastProject.BLL
         {
             return userInfoDal.AddUserInfo(userinfo) > 0;
         }
+
+        /// <summary>
+        /// 删除用户数据
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns></returns>
+        public bool DeleteUserInfo(UserInfo userInfo)
+        {
+            return userInfoDal.DeleteUserInfo(userInfo) > 0;
+        }
     }
 
 

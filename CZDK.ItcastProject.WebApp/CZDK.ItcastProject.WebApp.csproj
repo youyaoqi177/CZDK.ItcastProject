@@ -79,6 +79,9 @@
     <Compile Include="AddUserInfo.ashx.cs">
       <DependentUpon>AddUserInfo.ashx</DependentUpon>
     </Compile>
+    <Compile Include="DeleteUser.ashx.cs">
+      <DependentUpon>DeleteUser.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInfoList.ashx.cs">
       <DependentUpon>UserInfoList.ashx</DependentUpon>
@@ -86,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddUserInfo.ashx" />
+    <Content Include="DeleteUser.ashx" />
     <None Include="packages.config" />
     <Content Include="UserInfoList.ashx" />
     <None Include="Web.Debug.config">
