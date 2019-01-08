@@ -68,6 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddUserInfo.html" />
+    <Content Include="aspx\AddUserInfo.aspx" />
+    <Content Include="aspx\EditUser.aspx" />
+    <Content Include="aspx\UserInfoList.aspx" />
     <Content Include="bootstrap-3.3.7\bootstrap.min.css" />
     <Content Include="bootstrap-3.3.7\bootstrap.min.js" />
     <Content Include="Detail.html" />
@@ -81,6 +84,30 @@
   <ItemGroup>
     <Compile Include="AddUserInfo.ashx.cs">
       <DependentUpon>AddUserInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="aspx\AddUserInfo.aspx.cs">
+      <DependentUpon>AddUserInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspx\AddUserInfo.aspx.designer.cs">
+      <DependentUpon>AddUserInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspx\DeleteUser.ashx.cs">
+      <DependentUpon>DeleteUser.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="aspx\EditUser.aspx.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspx\EditUser.aspx.designer.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspx\UserInfoList.aspx.cs">
+      <DependentUpon>UserInfoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspx\UserInfoList.aspx.designer.cs">
+      <DependentUpon>UserInfoList.aspx</DependentUpon>
     </Compile>
     <Compile Include="DeleteUser.ashx.cs">
       <DependentUpon>DeleteUser.ashx</DependentUpon>
@@ -103,6 +130,7 @@
     <Content Include="AddUserInfo.ashx" />
     <Content Include="DeleteUser.ashx" />
     <Content Include="EditUser.ashx" />
+    <Content Include="aspx\DeleteUser.ashx" />
     <None Include="packages.config" />
     <Content Include="UserInfoList.ashx" />
     <Content Include="ShowDetail.ashx" />
