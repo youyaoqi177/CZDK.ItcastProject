@@ -39,7 +39,7 @@ namespace CZDK.ItcastProject.DAL
         public int AddUserInfo(UserInfo userinfo)
         {
             string sqlStr = "insert into UserInfo values(@username,@userpwd,@time,@email)";
-            SqlParameter[] pars = {
+            SqlParameter[] pars = new SqlParameter[]{
                    new SqlParameter("@username",SqlDbType.NVarChar,32),
                    new SqlParameter("@userpwd",SqlDbType.NVarChar,32),
                    new SqlParameter("@time",SqlDbType.DateTime),
@@ -51,7 +51,9 @@ namespace CZDK.ItcastProject.DAL
             pars[3].Value = userinfo.Email;
 
             //调用方法 参数CommandType.Text表示sql语句
+
             return SqlHelper.ExecuteNonquery(sqlStr, CommandType.Text, pars);
+
         }
 
         /// <summary>
@@ -106,6 +108,45 @@ namespace CZDK.ItcastProject.DAL
                 LoadEntity(userInfo, dt.Rows[0]);
             }
             return userInfo;
+        }
+
+        /// <summary>
+        /// 根据指定范围，获取指定数据
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public List<UserInfo> GetPageList(int start, int end)
+        {
+            string sqlStr = "select * from (select *,row_number()over(order by id) " +
+                "as num from UserInfo) as t where t.num>=@start and t.num<=@end";
+            SqlParameter[] pars =
+            {
+                new SqlParameter("@start",SqlDbType.Int),
+                new SqlParameter("@end",SqlDbType.Int)
+            };
+            pars[0].Value = start;
+            pars[1].Value = end;
+            DataTable dt = SqlHelper.GetDataTable(sqlStr, CommandType.Text, pars);
+            List<UserInfo> list = null;
+            if (dt.Rows.Count > 0)
+            {
+                list = new List<UserInfo>();
+                UserInfo userInfo = null;
+                foreach (DataRow row in dt.Rows)
+                {
+                    userInfo = new UserInfo();
+                    LoadEntity(userInfo, row);
+                    list.Add(userInfo);
+                }
+            }
+            return list;
+        }
+
+        public int GetRecordCount()
+        {
+            string sql = "select count(*) from UserInfo";
+            return Convert.ToInt32(SqlHelper.ExcuteScalar(sql, CommandType.Text));
         }
 
         /// <summary>

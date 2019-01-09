@@ -58,5 +58,29 @@ namespace CZDK.ItcastProject.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// 查询结果单行
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="type"></param>
+        /// <param name="pars"></param>
+        /// <returns></returns>
+        public static object ExcuteScalar(string sql, CommandType type, params SqlParameter[] pars)
+        {
+            using (SqlConnection connection = new SqlConnection(conStr))
+            {
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    if (pars != null)
+                    {
+                        command.Parameters.AddRange(pars);
+                    }
+                    command.CommandType = type;
+                    connection.Open();
+                    return command.ExecuteScalar();
+                }
+            }
+        }
     }
 }

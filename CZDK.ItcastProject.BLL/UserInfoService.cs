@@ -1,5 +1,6 @@
 ﻿using CZDK.ItcastProject.DAL;
 using CZDK.ItcastProject.Model;
+using System;
 using System.Collections.Generic;
 
 namespace CZDK.ItcastProject.BLL
@@ -47,9 +48,40 @@ namespace CZDK.ItcastProject.BLL
             return userInfoDal.GetUserInfo(id);
         }
 
+        /// <summary>
+        /// 修改用户数据
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns></returns>
         public bool EditUserInfo(UserInfo userInfo)
         {
             return userInfoDal.EditUserInfo(userInfo) > 0;
+        }
+
+        /// <summary>
+        /// 计算数据访问，完成分页
+        /// </summary>
+        /// <param name="pageIndex">当前页码</param>
+        /// <param name="pageSize">每页显示记录</param>
+        /// <returns></returns>
+        public List<UserInfo> GetPageList(int pageIndex, int pageSize)
+        {
+            int start = (pageIndex - 1) * pageSize + 1;
+            int end = pageIndex * pageSize;
+            return userInfoDal.GetPageList(start, end);
+        }
+
+        /// <summary>
+        /// 获取总页数
+        /// </summary>
+        /// <param name="pageSize">每页显示的记录数</param>
+        /// <returns></returns>
+        public int GetPageCount(int pageSize)
+        {
+            int recoredCount = userInfoDal.GetRecordCount();
+            int pageCount = Convert.ToInt32(Math.Ceiling((double)recoredCount / pageSize));
+            return pageCount;
+
         }
     }
 

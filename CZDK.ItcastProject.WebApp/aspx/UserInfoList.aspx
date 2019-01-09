@@ -32,7 +32,6 @@
                     <th>邮箱</th>
                     <th>时间</th>
                     <th>删除</th>
-                    <th>详细</th>
                     <th>编辑</th>
                 </tr>
                 <!--for循环遍历数据-->
@@ -49,6 +48,36 @@
                 </tr>
                 <%} %>
             </table>
+            <!--分页-->
+            <nav aria-label="Page navigation">
+
+
+                <ul class="pagination pagination-lg">
+                    <li>
+                        <a href="UserInfoList.aspx?pageIndex=<%=pagess-1%>" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <%for (int i = 1; i <= PageCount; i++) %>
+                    <%{ %>
+
+                    <%if (pagess == i) %>
+                    <%{ %>
+                    <li><a href="UserInfoList.aspx?pageIndex=<%=i %>"><span style="color: red"><%=i %></span></a></li>
+                    <%} %>
+                    <%else%>
+                    <%  { %>
+                    <li><a href="UserInfoList.aspx?pageIndex=<%=i %>"><%=i %></a></li>
+                    <%} %>
+                    <%} %>
+                    <li>
+                        <a href="UserInfoList.aspx?pageIndex=<%=pagess+1%>" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
         </div>
     </form>
 </body>
